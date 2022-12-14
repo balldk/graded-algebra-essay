@@ -134,6 +134,7 @@ $(ii)$ Chứng minh tương tự $(i)$\QED
 \begin{corollary}
     Cho $M$ là module phân bậc biểu diễn được và $N$ là module con nguyên sơ (nguyên tố) phân bậc của $M$. Khi đó $Att(N) \subseteq Att(M)$.
 \end{corollary}
+\startproof Suy ra trực tiếp từ chứng minh của Định lí \ref{them1}.
 
 \begin{lemma}
     \label{lem2}
@@ -152,7 +153,7 @@ Ta cần lưu ý rằng module thứ cấp và module thứ cấp phân bậc l�
 \begin{example}
     Cho $k$ là trường, $M = k[x,x^{-1}]$ là vành đa thức Laurent và coi $M$ như một $k[x]$-module với phân bậc chuẩn. Khi đó $M$ thứ cấp phân bậc vì mọi $f = \sum a_ix^i$ trong $M$ đều có thể tách được thành
     $$
-        f = ax^n\sum \frac{a_i}{a}x^{i-n} \in M
+        f = ax^n\sum \frac{a_i}{a}x^{i-n} \in ax^nM
     $$
     với $ax^n$ là thành phần thuần nhất trong $k[x]$ nên $ax^n M = M$ với $ax^n \in h(k[x])$ bất kì. Nhưng $M$ không thứ cấp do $(1+x)M \neq M$ và $1+x \notin \sqrt{Ann(M)}$.
 \end{example}
