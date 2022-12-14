@@ -1,0 +1,165 @@
+\input{header}
+
+\begin{document}
+\input{cover}
+
+\section{Giới thiệu}
+% Trình bày không quá 1/3 trang
+Sự phân tích nguyên sơ trên module được nghiên cứu mạnh mẽ trong đại số giao hoán. Trong đó có một kết quả nổi tiếng chỉ ra rằng mọi module Noether đều có thể phân tích thành giao các thành phần nguyên sơ, kèm theo đó là các định lí về sự phân tích duy nhất. Tương ứng trên module Artin chúng ta cũng có kết quả tương tự được đưa ra bởi Macdonald vào năm 1973. Cụ thể, mọi module Artin đều có thể biểu diễn được thành tổng các module thứ cấp. Hơn nữa sự biểu diễn này là duy nhất theo nghĩa các thành phần nguyên tố đính kèm \textit{(attached primes)} của module đó là duy nhất. Trong bài tiểu luận này, chúng ta sẽ đi tìm hiểu các tính chất của module thứ cấp và sự biểu diễn thứ cấp trên module phân bậc dựa trên nội dung của bài báo \cite{AFGraded}. Một cách tiếp cận của tác giả cho vấn đề này đó là chúng ta sẽ định nghĩa lại một vài thuật ngữ dựa trên các phần tử thuần nhất thay vì phần tử bất kì như thông thường.
+
+\section{Kiến thức chuẩn bị}
+% Trình bày các kiến thức liên quan đến nội dung chính, không bao gồm các kiến thức có trong bài giảng môn học (trừ các định nghĩa).
+Ở phần này ta sẽ đưa ra một số định nghĩa và bổ đề cần thiết để sử dụng xuyêt suốt bài tiểu luận.
+
+Kể từ đây nếu không giải thích gì thêm thì ta mặc định coi $R = \bigoplus R_n$ là vành $\Z$-phân bậc và $M = \bigoplus M_n$ là $R$-module phân bậc.
+
+\begin{define} Cho $I$ là ideal phân bậc của $R$
+    \begin{enumerate}[(i)]
+        \item Ta kí hiệu $h(R) = \bigcup_{n \in \Z}R_n$ là tập các phần tử thuần nhất của $R$ và $h(M) = \bigcup_{n \in \Z}M_n$ là tập các phần tử thuần nhất của $M$.
+        \item Ta định nghĩa \textit{căn phân bậc của $I$}, kí hiệu $Gr(I)$, là tập các phần tử $r = \sum r_n \in R$ sao cho với mọi $r_n \in R_n$ đều tồn tại $m_n$ để $r_n^{m_n} \in I$.
+        \item $I$ được gọi là ideal nguyên tố phân bậc nếu $I \neq R$ và với mỗi $a,b \in h(R)$, nếu $ab \in I$ thì $a \in I$ hoặc $b \in I$.\item $I$ được gọi là ideal nguyên sơ phân bậc nếu $I \neq R$ và với mỗi $a,b \in h(R)$, nếu $ab \in I$ thì $a \in I$ hoặc $b \in Gr(I)$.
+        \item $r \in h(M)$ được gọi là \textit{ước phân bậc của không trên $M$} nếu tồn tại $a \in h(M) \setminus \{0\}$ sao cho $ra = 0$.
+    \end{enumerate}
+\end{define}
+
+\begin{remark}
+    Nếu $I$ là ideal nguyên sơ phân bậc của $R$ thì khi đó $P := Gr(I)$ là ideal nguyên tố phân bậc của $R$ và ta nói $I$ là $P$-nguyên sơ phân bậc.
+\end{remark}
+
+\begin{define}
+    $M$ được gọi là $R$-module \textit{thứ cấp phân bậc} nếu $M \neq 0$ và với mỗi $r \in h(R)$ thì $rM = M$ hoặc $r \in Gr(Ann(M))$.
+\end{define}
+
+\begin{remark}
+    Nếu $M$ là $R$-module thứ cấp phân bậc thì $P := Gr(Ann(M))$ là ideal nguyên tố của $R$, khi đó ta nói $M$ là $P$-thứ cấp phân bậc.
+\end{remark}
+
+\begin{define}
+    Cho $N$ là $R$-module con phân bậc của $M$, ta nói
+    \begin{enumerate}[(i)]
+        % \item $M$ là $R$-module tự do phân bậc nếu $M$ có cơ sở chứa những phần tử thuần nhất.
+        \item $N$ là module con nguyên tố phân bậc của $M$ nếu $N \neq M$ và $\forall r \in h(R)$, $m \in h(M)$, nếu $rm \in N$ thì $m \in N$ hoặc $r \in (N:M)$.
+        \item $N$ là module con nguyên sơ phân bậc của $M$ nếu $N \neq M$ và $\forall r \in h(R)$, $m \in h(M)$, nếu $rm \in N$ thì $m \in N$ hoặc $r \in \sqrt{(N:M)}$.
+        \item $N$ là module con tối đại phân bậc của $M$ nếu $N \neq M$ và không tồn tại module con phân bậc $K$ của $M$ nào để $N \subsetneq K \subsetneq M$.
+        \item $M$ là module đơn phân bậc nếu $M$ chỉ có hai module con phân bậc là $0$ và chính nó.
+    \end{enumerate}
+\end{define}
+
+\begin{lemma}
+    \label{lem1}
+    Cho $N$ là $R$-module con phân bậc của $M$. Khi đó ta có những mệnh đề sau
+    \begin{enumerate}[(i)]
+        \item $N$ là module con tối đại phân bậc của $M$ khi và chỉ khi $M / N$ là $R$-module đơn phân bậc.
+        \item Nếu $r \in h(R),\ x \in h(M)$ và $I$ là ideal phân bậc của $R$ thì khi đó $(N:M)$ là ideal phân bậc của $R$ và $Rx,IN,rN$ là module con phân bậc của $M$.
+    \end{enumerate}
+\end{lemma}
+
+\section{Nội dung chính}
+% Trình bày các kết quả theo yêu cầu chi tiết của đề tài
+\begin{lemma}
+    \label{lem:zerodivLemma}
+    Cho $M$ là $R$-module đơn phân bậc, khi đó mọi ước phân bậc của không trên $M$ đều là linh hóa tử của $M$.
+\end{lemma}
+\startproof Xét $r$ là ước phân bậc của không trên $M$ bất kì, tức là tồn tại $a \in h(M)\setminus\{0\}$ sao cho $ra=0$. Vì $M$ là $R$-module phân bậc đơn nên $Ra = M$. Do đó
+$$
+    rM = r(Ra) = (Rr)a = R(ra) = 0.
+$$
+Vậy $r$ là linh hóa tử của $M$.\QED
+
+\begin{proposition}
+    Mọi module con tối đại phân bậc của $M$ đều nguyên tố phân bậc.
+\end{proposition}
+\startproof Cho $N$ là module con tối đại phân bậc bất kì của $M$. Lúc này $M/N$ là module con đơn phân bậc (theo Bổ đề \ref{lem1}). Xét $rm \in N$ với $r \in h(R)$ và $m \in h(M)$. Giả sử $m \notin N$, khi đó $0 \neq (m + N) \in h(M/N)$ và $r(m+N) = 0$. Tức $r$ là ước phân bậc của không trên $M/N$. Áp dụng Bổ đề \ref{lem:zerodivLemma} ta được $r(M/N) = 0$, suy ra $r \in (M:N)$. \QED
+
+\begin{proposition}
+    Cho $N$ là $R$-module con của $M$. Khi đó
+    \begin{enumerate}[(i)]
+        \item Nếu $N$ nguyên sơ phân bậc thì $(N:M)$ là ideal nguyên sơ phân bậc.
+        \item Nếu $N$ nguyên tố phân bậc thì $(N:M)$ là ideal nguyên tố phân bậc.
+    \end{enumerate}
+\end{proposition}
+\startproof $(i)$ Trước tiên ta có $(N:M) \neq R$ do $N \neq M$. Xét $a,b \in h(R)$. Giả sử $ab \in (N:M)$ với $b \notin (N:M)$. Do $bM \not\subseteq N$ nên tồn tại $m \in h(M)$ sao cho $bm \notin N$. Hơn nữa $a(bm) = (ab)m \in N$ nên theo giả thiết $N$ nguyên sơ phân bậc ta suy ra được $a \in \sqrt{(M:N)}$.\QED
+
+\noindent
+$(ii)$ tương tự như chứng minh $(i)$.
+
+\begin{theorem}
+    Cho $M$ là $R$-module thứ cấp phân bậc và $N \neq 0$ là $R$-module con $P$-nguyên tố phân bậc của $M$. Khi đó $N$ là $P$-thứ cấp phân bậc.
+\end{theorem}
+\startproof Đặt $Q = Gr(Ann(M))$, khi đó $M$ là $Q$-thứ cấp phân bậc. Trước tiên ta chứng minh $N$ là $Q$-thứ cấp phân bậc. Cụ thể ta chỉ ra rằng $\forall r \in h(R)$, nếu $r \in Q$ thì $r \in Gr(Ann(N))$ và nếu $r \notin Q$ thì $rN = N$.
+
+Lấy $r \in h(R)$ bất kì. Nếu $r \in Q = Gr(Ann(M))$ thì khi đó tồn tại $k \in \N$ sao cho $r^kM = 0$. Suy ra $r^kN \subseteq r^kM = 0$. Vậy $r \in Gr(Ann(N))$. Nếu $r \notin Q$ thì ta có $rM = M$. Xét $x \in N$ bất kì, khi đó tồn tại $m = \sum m_n \in M$, $m_n \in M_n$ sao cho $x = rm = \sum rm_n$. Vì $N$ phân bậc nên $rm_n \in N$. Hơn nữa do $N$ nguyên tố phân bậc và $rM = M \not\subseteq N$ nên $m_n \in N$. Suy ra $x = rm \in rN$. Vậy $rN = N$.
+
+Bây giờ ta sẽ chứng tỏ rằng $P = Q$. Cho $r \in P = (N:M)$. Ta có $rM \neq M$ vì nếu $rM = M$ thì $N = M$ là mâu thuẫn. Theo giả thiết $M$ là thứ cấp ta được $r \in Gr(Ann(M))$, tức là $P \subseteq Q$. Ngược lại, ta xét $r = \sum r_n \in Q$. Khi đó với mỗi $n$, tồn tại $m_n \in \N$ để $r_n^{m_n}M = 0$. Hơn nữa vì $M \neq N$ nên tồn tại $x = \sum x_n \in M \setminus N$, tức là có một thành phần $x_k$ nào đó mà không nằm trong $N$. Khi đó ta có $r_n^{m_n} x_k = 0$ với mọi $n$. Do $N$ phân bậc nguyên tố nên suy ra $r_n \in P$. Vậy $r \in N$.\QED
+
+\begin{lemma}
+    \label{lem:secondaryCondition}
+    Cho $N$ là module con $P$-thứ cấp của $M$. Khi đó
+    \begin{enumerate}[(i)]
+        \item Nếu $K$ là module con nguyên sơ phân bậc của $M$ thì $N \cap K$ là $P$-thứ cấp phân bậc.
+        \item Nếu $K$ là module con nguyên tố phân bậc của $M$ thì $N \cap K$ là $P$-thứ cấp phân bậc.
+    \end{enumerate}
+\end{lemma}
+\startproof $(i)$ Xét $r \in h(R)$. Nếu $r \in P$ thì khi đó $r \in Gr(Ann(N \cap K))$ do $r^m(N \cap K) \subseteq r^mN = 0$ với $m \in \N$ nào đó. Nếu $r \notin P$, ta sẽ chứng minh rằng $r(N \cap K) = N \cap K$. Thật vậy, xét $x \in N \cap K$, khi đó tồn tại $m = \sum m_n \in N$ sao cho $x = rm$. Hơn nữa $am_n \in K,\ \forall n \in \Z$ do $K$ phân bậc. Từ đó ta được $m_n \in K,\ \forall n \in \Z$ (vì nếu có một thành phần $m_n$ nào đó để $m_n \notin K$ thì $r \in \sqrt{(K:M)}$, suy ra tồn tại $s \in \N$ để $m_n \in N = r^sN \subseteq r^sM \subseteq K \Rightarrow$ mâu thuẫn). Do đó $m \in K$, dẫn tới $x = rm \in r(N:M)$.
+
+\noindent
+$(ii)$ Chứng minh tương tự $(i)$.
+
+\begin{define}
+    $M$ được gọi là \textit{phân bậc biểu diễn được} nếu $M$ có dạng $M = M_1 + M_2 + \cdots + M_n$ với $M_i$ là thứ cấp phân bậc. Đặt $P_i := Gr(Ann(M_i))$, khi đó ta kí hiệu
+    $$
+        Att(M) := \{P_1, P_2, \cdots,P_n\}
+    $$
+    là tập các ideal nguyên tố đính kèm của $M$. Ta nói biểu diễn của $M$ là \textit{tối tiểu} nếu $P_1,\cdots,P_n$ phân biệt và $M_i \not\subseteq \sum_{j\neq i} M_j$ với mọi $1 \leq i \leq n$.
+\end{define}
+
+\begin{theorem}\quad\vspace{-6pt}
+    \label{them1}
+    \begin{enumerate}[(i)]
+        \item Mọi module con nguyên sơ phân bậc của module phân bậc biểu diễn được đều phân bậc biểu diễn được.
+        \item Mọi module con nguyên tố phân bậc của module phân bậc biểu diễn được đều phân bậc biểu diễn được.
+    \end{enumerate}
+\end{theorem}
+\startproof $(i)$ Xét $M = \sum_{i=1}^k M_i$ là một biểu diễn phân bậc tối tiểu của $M$ với $Att(M)=\{P_1,\cdots,P_k\}$ và $N$ là module con nguyên sơ phân bậc của $M$. Khi đó do $N \neq M$ nên tồn tại một thành phần $M_i$ nào đó để $M_i \not\subseteq N$. Để thuận tiện thì ta coi thành phần đó là $M_1$. Trước tiên ta sẽ chứng tỏ $P = P_1$. Cho $r = \sum r_n \in P_1$. Khi đó tồn tại các số nguyên dương $m_n$ sao cho $r_n^{m_n}M_1 = 0$ với mọi $n \in \Z$. Chọn $x \in h(M_1) \setminus N$, khi đó ta được $r_n^{m_n}x = 0$. Vì $P$ nguyên sơ phân bậc nên $r_n \in P$ với mọi $n \in \N$, suy ra $r \in P$. Do đó $P_1 \subseteq P$. Ngược lại, giả sử tồn tại phần tử thuần nhất $s \in P \setminus P_1$. Lúc này $M_1 = s^nM_1 \subseteq s^nM \subseteq N$ với $n \in \N$ nào đó (mâu thuẫn). Vậy $P = P_1$. Hơn nữa, ta sẽ đi chứng minh $M_i \subseteq N$ với mọi $i=2,k$. Vì $P \neq P_i$, ta xét riêng hai trường hợp sau
+
+\textit{Trường hợp $P_i \not\subseteq P$.} Tồn tại một phần tử thuần nhất $p \in P \setminus P_i$. Khi đó $M_i = p^tM_i \subseteq p^tM \subseteq N$ với $t \in \N$ nào đó.
+
+\textit{Trường hợp $P \not\subseteq P_i$.} Tồn tại phần tử thuần nhất $q \in P_i \setminus P$. Xét $b = \sum b_n \in M_i$. Khi đó $q^mb_n = 0 \in N$ với $m \in \N$ nào đó. Do $N$ phân bậc ta được $b_n \in N$ với mọi $n \in \Z$, tức là $b \in N$. Vậy $M_i \subseteq N$.
+
+Từ đó ta có $N = N \cap M = N \cap M_1 + \sum_{i=2}^k M_i$. Theo Bổ đề \ref{lem:secondaryCondition} ta được $N \cap M_1$ là $P_1$-thứ cấp phân bậc, dẫn đến $N$ biểu diễn được.
+
+\noindent
+$(ii)$ Chứng minh tương tự $(i)$\QED
+
+\begin{corollary}
+    Cho $M$ là module phân bậc biểu diễn được và $N$ là module con nguyên sơ (nguyên tố) phân bậc của $M$. Khi đó $Att(N) \subseteq Att(M)$.
+\end{corollary}
+
+\begin{lemma}
+    \label{lem2}
+    Cho $N$ là module con phân bậc biểu diễn được của $M$. Nếu $K$ là module con nguyên sơ phân bậc (nguyên tố phân bậc) của $M$ thì khi đó $N \cap K$ phân bậc biểu diễn được.
+\end{lemma}
+\startproof Theo Định lí \ref{them1} thì ta chỉ cần chứng tỏ rằng $N \cap K$ là module con nguyên sơ phân bậc của $N$ là đủ. Xét $rn \in N \cap K$ với $r \in h(R)$ và $n \in h(N)$. Giả sử $n \notin N \cap K$, do $K$ nguyên sơ phân bậc nên ta suy ra được $a^tM \subseteq K$ với $t \in \N$ nào đó. Vậy $r^t(N \cap K) \subseteq N$. \QED
+
+\begin{theorem}
+    Cho $N$ là module con phân bậc của $M$ có phân tích nguyên sơ phân bậc. Nếu $K$ là module con phân bậc biểu diễn được của $M$ thì khi đó $N \cap K$ có thể biểu diễn được bằng giao hữu hạn các module phân bậc biểu diễn được.
+\end{theorem}
+\startproof Xét $N = \bigcap_{i=1}^n N_i$ với $N_i$ là nguyên sơ phân bậc. Khi đó $N \cap K = (N_1 \cap K) \cap \cdots \cap (K \cap N_n)$. Áp dụng Bổ đề \ref{lem2} ta được điều phải chứng minh. \QED
+
+\section{Áp dụng}
+% Trình bày các tính chất, ví dụ, bài toán áp dụng kết quả của mục 3 để giải.
+Ta cần lưu ý rằng module thứ cấp và module thứ cấp phân bậc là hai khái niệm khác nhau, tức là một module thứ cấp phân bậc trong trường hợp tổng quát không nhất thiết là module thứ cấp. Ta xét ví dụ sau:
+\begin{example}
+    Cho $k$ là trường, $M = k[x,x^{-1}]$ là vành đa thức Laurent và coi $M$ như một $k[x]$-module với phân bậc chuẩn. Khi đó $M$ thứ cấp phân bậc vì mọi $f = \sum a_ix^i$ trong $M$ đều có thể tách được thành
+    $$
+        f = ax^n\sum \frac{a_i}{a}x^{i-n} \in M
+    $$
+    với $ax^n$ là thành phần thuần nhất trong $k[x]$ nên $ax^n M = M$ với $ax^n \in h(k[x])$ bất kì. Nhưng $M$ không thứ cấp do $(1+x)M \neq M$ và $1+x \notin \sqrt{Ann(M)}$.
+\end{example}
+
+\renewcommand\refname{Tài liệu tham khảo}
+\begin{thebibliography}{9}
+    \bibitem{AFGraded} S. E. Atani and F. Farzalipour, On graded secondary modules, Turk J. Math. 31 (2007), 371–378.
+    % Trình bày các tài liệu (vừa đủ) để thực hiện tiểu luận này. Chỉ liệt kê tên tài liệu được trích dẫn trong phần nội dung của tiểu luận, tài liệu tham khảo chính của đề tài phải được trích dẫn trong phần giới thiệu đề tài.
+\end{thebibliography}
+\end{document}
