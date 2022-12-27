@@ -76,7 +76,11 @@ Mệnh đề trên giúp ta làm việc với ideal phân bậc dễ dàng hơn 
     \label{lem:rep}
     Nếu $M_1$ và $M_2$ là hai $R$-module $P$-thứ cấp phân bậc thì $M_1 + M_2$ cũng là $R$-module $P$-thứ cấp phân bậc.
 \end{lemma}
-\startproof Trước hết ta có $\sqrt{Ann(M_1 + M_2)} = \sqrt{Ann(M_1)} = P$. Do đó với $r \in h(R)$, nếu $r \notin P$ thì $rM_1 = M_1$ và $rM_2 = M_2$. Suy ra $r(M_1 + M_2) = rM_1 + rM_2 = M_1 + M_2$. Vậy $M_1 + M_2$ là $P$-thứ cấp phân bậc. \QED
+\startproof Trước hết ta có
+$$
+    \sqrt{Ann(M_1 + M_2)} = \sqrt{Ann(M_1) \cap Ann(M_2)} = \sqrt{Ann(M_1)} \cap \sqrt{Ann(M_2)} = P \cap P = P.
+$$
+Do đó với $r \in h(R)$, nếu $r \notin P$ thì $rM_1 = M_1$ và $rM_2 = M_2$. Suy ra $r(M_1 + M_2) = rM_1 + rM_2 = M_1 + M_2$. Vậy $M_1 + M_2$ là $P$-thứ cấp phân bậc. \QED
 
 \begin{proposition}
     Mọi module phân bậc biểu diễn được đều có biểu diễn tối tiểu. 
